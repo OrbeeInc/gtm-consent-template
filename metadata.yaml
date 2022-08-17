@@ -1,5 +1,5 @@
 homepage: "https://www.orbee.com"
 documentation: "https://github.com/OrbeeInc/gtm-consent-template"
-verisons:
+versions:
   - sha: fb243bc9a7e6fd4f96a75ecfaafb8da87235dd5b
     changeNotes: v1.0, First release.
