@@ -1,1 +1,2 @@
-# gtm-consent-template
+# Orbee Consent Mode for GTM
+Google Tag Manager(GTM) template for enabling the Orbee consent banner. You can set defaults through the tag's settings which allow the user to deny or grant and cookies before a user lands on their page. Once the user sets their cookie preferences it will override the default settings.
