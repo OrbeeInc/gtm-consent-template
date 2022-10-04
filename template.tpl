@@ -14,6 +14,7 @@ ___INFO___
   "version": 1,
   "securityGroups": [],
   "displayName": "Orbee Consent Mode for GTM",
+  "categories": ["TAG_MANAGEMENT", "PERSONALIZATION", "ANALYTICS"],
   "brand": {
     "id": "brand_dummy",
     "displayName": "",
