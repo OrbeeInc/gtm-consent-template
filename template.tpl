@@ -181,16 +181,9 @@ const onUserConsent = (consent) => {
   };
   updateConsentState(consentModeStates);
 };
-
-const setup = () => {
-  log('call in window next');
-
-  callInWindow('addConsentListenerExample', onUserConsent);
-};
   
 const onSuccess = function() {
   log('popup script loaded successfully.');
-  setup();
   data.gtmOnSuccess();
 };
 
@@ -204,29 +197,30 @@ setDefaultConsentState({
   analytics_storage: data.analyticsStorage,
   functionality_storage: data.functionalityStorage,
   personalization_storage: data.personalizationStorage,
-  security_storage: data.securityStorage
+  security_storage: data.securityStorage,
+  wait_for_update: 500
 });
 
- const consent_flag = getCookieValues('orb-viewed-cookie-policy');
- log('get consent flag', consent_flag);
- if (consent_flag[0] === 'true') {
-   log('Found orb consent flag');
-   const func_cookies = getCookieValues('orb-functional');
-   const personal_cookies = getCookieValues('orb-personalization');
-   const analytics_cookies = getCookieValues('orb-analytics');
-   const ads_cookies = getCookieValues('orb-ads');
-   const security_cookies = getCookieValues('orb-security');
+const consent_flag = getCookieValues('orb-viewed-cookie-policy');
+log('get consent flag', consent_flag);
+if (consent_flag[0] === 'true') {
+  log('Found orb consent flag');
+  const func_cookies = getCookieValues('orb-functional');
+  const personal_cookies = getCookieValues('orb-personalization');
+  const analytics_cookies = getCookieValues('orb-analytics');
+  const ads_cookies = getCookieValues('orb-ads');
+  const security_cookies = getCookieValues('orb-security');
    
-   const payload = {
-     ad_storage: ads_cookies[0] === 'true' ? 'granted' : 'denied',
-     analytics_storage: analytics_cookies[0] === 'true' ? 'granted' : 'denied',
-     functionality_storage: func_cookies[0] === 'true' ? 'granted' : 'denied',
-     personalization_storage: personal_cookies[0] === 'true' ? 'granted' : 'denied',
-     security_storage: security_cookies[0] === 'true' ? 'granted' : 'denied'
-   };
+  const payload = {
+    ad_storage: ads_cookies[0] === 'true' ? 'granted' : 'denied',
+    analytics_storage: analytics_cookies[0] === 'true' ? 'granted' : 'denied',
+    functionality_storage: func_cookies[0] === 'true' ? 'granted' : 'denied',
+    personalization_storage: personal_cookies[0] === 'true' ? 'granted' : 'denied',
+    security_storage: security_cookies[0] === 'true' ? 'granted' : 'denied'
+  };
    
-   onUserConsent(payload);
- }
+  onUserConsent(payload);
+}
 
 const url = "https://cdn.orb.ee/consent/gtm/main.js";
 injectScript(url, onSuccess, onFailure);
@@ -530,6 +524,37 @@ ___WEB_PERMISSIONS___
                   {
                     "type": 1,
                     "string": "security_storage"
+                  },
+                  {
+                    "type": 8,
+                    "boolean": false
+                  },
+                  {
+                    "type": 8,
+                    "boolean": true
+                  }
+                ]
+              },
+              {
+                "type": 3,
+                "mapKey": [
+                  {
+                    "type": 1,
+                    "string": "consentType"
+                  },
+                  {
+                    "type": 1,
+                    "string": "read"
+                  },
+                  {
+                    "type": 1,
+                    "string": "write"
+                  }
+                ],
+                "mapValue": [
+                  {
+                    "type": 1,
+                    "string": "wait_for_update"
                   },
                   {
                     "type": 8,
