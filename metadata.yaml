@@ -1,9 +1,11 @@
 homepage: "https://www.orbee.com"
 documentation: "https://github.com/OrbeeInc/gtm-consent-template"
 versions:
-  # Latest Version
-  - sha: 4460dadd0c49473bda7073381692fbf335e24e46
-    changeNotes: Add categories to template
-  # Older Version
-  - sha: f45a7ac7af767347b0b27647a933ed89925844f5
-    changeNotes: v1.0, First release.
+    # Latest Version
+    - sha: c8846069162705d79455a89682b52a6fd5a3b214
+      changeNotes: Add wait_for_update to default consent call
+    # Older Version
+    - sha: 4460dadd0c49473bda7073381692fbf335e24e46
+      changeNotes: Add categories to template
+    - sha: f45a7ac7af767347b0b27647a933ed89925844f5
+      changeNotes: v1.0, First release.
